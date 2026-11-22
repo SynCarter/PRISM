@@ -1,11 +1,14 @@
 # PRISM - 3D Gaussian Splat Photogrammetry & SPZ Flight Viewer
 
+[![Live 3D Demo](https://img.shields.io/badge/Live%203D%20Demo-prism--syn--carter.vercel.app-ea580c?style=for-the-badge&logo=vercel&logoColor=white)](https://prism-syn-carter.vercel.app/demo)
 [![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 [![CUDA](https://img.shields.io/badge/CUDA_12-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://developer.nvidia.com/cuda-toolkit)
 [![Vite](https://img.shields.io/badge/Vite_6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+
+> **Live Preview**: The [Live 3D Demo](https://prism-syn-carter.vercel.app/demo) opens the standalone SPZ Flight Viewer demo directly in your browser (while full photo ingestion and cloud GPU reconstruction runs locally with Supabase + Kaggle).
 
 PRISM is an end-to-end browser-based 3D photogrammetry and spatial computing platform. It bridges the gap between raw physical photography and interactive, real-time 3D Gaussian Splatting (`.spz`). By orchestrating headless cloud GPU workers with Supabase Realtime, PRISM turns sets of unposed 2D photographs into navigable, photorealistic 3D digital twins that can be explored in real time directly in the browser with no plugins required.
 
