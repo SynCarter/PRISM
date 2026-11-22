@@ -140,7 +140,10 @@ function mapSupabaseRowToJob(row: SupabaseProjectRow): ProjectJob {
     };
 }
 
+const isDemoOnlyEnv = import.meta.env.VITE_DEMO_ONLY === 'true';
+
 function checkIsDemoRoute(): boolean {
+    if (isDemoOnlyEnv) return true;
     if (typeof window === 'undefined') return false;
     const path = window.location.pathname.toLowerCase();
     const params = new URLSearchParams(window.location.search);
@@ -409,6 +412,9 @@ export default function App() {
     }, []);
 
     useEffect(() => {
+        if (isDemoOnlyEnv && typeof window !== 'undefined' && window.location.pathname !== '/demo') {
+            window.history.replaceState({}, '', '/demo');
+        }
         const handleLocationChange = () => {
             setIsDemo(checkIsDemoRoute());
         };
@@ -893,16 +899,28 @@ export default function App() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <button
-                            onClick={() => {
-                                window.history.pushState({}, '', '/');
-                                setIsDemo(false);
-                            }}
-                            className="px-3.5 py-1.5 rounded-lg border border-[#ea580c]/40 bg-[#ea580c]/15 hover:bg-[#ea580c]/25 text-xs font-mono text-[#ea580c] hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
-                        >
-                            <span>Open Workspace</span>
-                            <span className="text-xs">→</span>
-                        </button>
+                        {!isDemoOnlyEnv ? (
+                            <button
+                                onClick={() => {
+                                    window.history.pushState({}, '', '/');
+                                    setIsDemo(false);
+                                }}
+                                className="px-3.5 py-1.5 rounded-lg border border-[#ea580c]/40 bg-[#ea580c]/15 hover:bg-[#ea580c]/25 text-xs font-mono text-[#ea580c] hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
+                            >
+                                <span>Open Workspace</span>
+                                <span className="text-xs">→</span>
+                            </button>
+                        ) : (
+                            <a
+                                href="https://github.com/SynCarter/PRISM"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="px-3.5 py-1.5 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 text-xs font-mono text-slate-300 hover:text-white transition-all flex items-center gap-1.5"
+                            >
+                                <span>GitHub Repository</span>
+                                <span className="text-xs">↗</span>
+                            </a>
+                        )}
                     </div>
                 </div>
 
